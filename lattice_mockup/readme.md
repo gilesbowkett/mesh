@@ -1,3 +1,4 @@
 this is the UI mockup stuff I did for Lattice.
 
-https://github.com/gilesbowkett/lattice
+hoping it eventually becomes the actual game design.
+
