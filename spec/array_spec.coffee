@@ -25,3 +25,12 @@ describe Array, ->
     ball = new Ball 4
     expect(row.sequence(ball)).toBeTruthy()
 
+  it "emulates Ruby's Array#compact", ->
+    expect([null].compact()).toEqual([])
+    expect([null, 1].compact()).toEqual([1])
+    expect([null, 1, null].compact()).toEqual([1])
+
+  it 'collapses arrays', ->
+    expect([null, 1, 2, 3, 4, 5, 6].collapse()).toEqual([1, 2, 3, 4, 5, 6, null])
+    expect([null, 1, null, null, 4, null, 6].collapse()).toEqual([1, 4, 6, null, null, null, null])
+
