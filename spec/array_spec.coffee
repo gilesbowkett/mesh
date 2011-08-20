@@ -29,6 +29,7 @@ describe Array, ->
     expect([null].compact()).toEqual([])
     expect([1, null].compact()).toEqual([1])
     expect([null, 1, null].compact()).toEqual([1])
+    expect([null, 1, 2, 3, 4, null, null].compact()).toEqual([1, 2, 3, 4])
 
   it 'recognizes sequences', ->
     b4 = new Ball 4
