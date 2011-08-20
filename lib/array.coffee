@@ -1,7 +1,8 @@
 Array::sequence = ->
   true
 
-Array::wtf = (first, last) ->
+Array::ball_value_matches_subsequence_size = (ball) ->
+  ball.number == (@subsequence ball.number).length
 
 Array::subsequence = (ball) ->
   @biggest_subsequence = []
