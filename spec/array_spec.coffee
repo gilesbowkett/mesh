@@ -13,7 +13,7 @@ describe Array, ->
     expect([].wtf?).toBeTruthy()
 
   it 'recognizes subsequences', ->
-    # expect([1, 2, 3, 4, null, null, null].subsequence 4).toEqual([1, 2, 3, 4])
+    expect([1, 2, 3, 4, null, null, null].subsequence 4).toEqual([1, 2, 3, 4])
     # expect([4, 4, 4, 4, null, null, null].subsequence 4).toEqual([4, 4, 4, 4])
     # expect([null, null, null, 1, 2, 3, 4].subsequence 4).toEqual([1, 2, 3, 4])
     # expect([null, 1, 2, 3, 4, null, null].subsequence 4).toEqual([1, 2, 3, 4])
