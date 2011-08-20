@@ -1,6 +1,4 @@
 Array::sequence = (ball) ->
-  # whoa - the Ruby version first removes nils! probably an important difference here...
-  # TODO: write a spec addressing that possibility
   ball.number == (@subsequence ball.number).length
 
 Array::subsequence = (ball) ->
