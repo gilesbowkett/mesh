@@ -2,10 +2,6 @@ require '/Users/giles/dev/mesh/lib/array'
 Ball = (require '/Users/giles/dev/mesh/lib/ball').Ball
 
 describe Array, ->
-  beforeEach ->
-    @addMatchers {
-      toBeSequence: -> true == @actual.sequence()
-    }
 
   it 'has the right methods', ->
     expect([].sequence?).toBeTruthy()
@@ -29,10 +25,15 @@ describe Array, ->
     ball = new Ball 4
     expect(row.ball_value_matches_subsequence_size(ball)).toBeTruthy()
 
+  it "emulates Ruby's Array#compact", ->
+    expect([null].compact()).toEqual([])
+    expect([1, null].compact()).toEqual([1])
+    expect([null, 1, null].compact()).toEqual([1])
+
   it 'recognizes sequences', ->
     b4 = new Ball 4
-    any = new Ball
+    any = new Ball (Math.floor(Math.random() * 7))
 
-    # expect([b4, any, any, any, null, null, null]).toBeSequence()
-    # expect([b4, any, null, any, null, any, null]).not.toBeSequence()
+    # expect([b4, any, any, any, null, null, null].sequence b4).toBeTruthy()
+    # expect([b4, any, null, any, null, any, null].sequence b4).not.toBeTruthy()
 

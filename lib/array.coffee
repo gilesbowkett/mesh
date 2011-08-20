@@ -1,7 +1,13 @@
-Array::sequence = ->
-  true
+Array::sequence = (ball) ->
+  @ball_value_matches_subsequence_size(ball)
+
+# https://github.com/jashkenas/coffee-script/blob/master/examples/underscore.coffee
+Array::compact = ->
+  item for item in this when item
 
 Array::ball_value_matches_subsequence_size = (ball) ->
+  # whoa - the Ruby version first removes nils! probably an important difference here...
+  # TODO: write a spec addressing that possibility
   ball.number == (@subsequence ball.number).length
 
 Array::subsequence = (ball) ->
