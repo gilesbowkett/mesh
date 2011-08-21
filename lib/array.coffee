@@ -1,6 +1,6 @@
 # do we have a sequence matching the rules of the game?
 Array::sequence = (ball) ->
-  ball.number == (@subsequence ball.number).length
+  ball.value == (@subsequence ball.value).length
 
 # do we have a subset in the total set which qualifies as explodable?
 Array::subsequence = (ball) ->
