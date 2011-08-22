@@ -1,3 +1,10 @@
+# this code is all about monkey-patching. a brief defense thereof: monkey-patching is very risky
+# in swappable, modular application components such as gems and Rails plugins. a game operates
+# differently. gems and plugins must collaborate cleanly with all sorts of unknown code. a game
+# declares its own world and rules it completely. I enjoy monkey-patching even within gems and
+# plugins, but guilt tinges that enjoyment, while caution restrains it. here, in a game, I feel
+# free to monkey-patch all I want.
+
 # do we have a sequence matching the rules of the game?
 Array::sequence = (ball) ->
   ball.value == (@subsequence ball.value).length
