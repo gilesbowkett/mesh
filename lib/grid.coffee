@@ -1,4 +1,4 @@
-# in the earlier Ruby version, this class revolves around its own @grid instance variable,
+# in the earlier Ruby version, this class revolved around its own @grid instance variable,
 # which is obviously a code smell. @grid represents a set of rows, so this time around it's
 # called @rows.
 
