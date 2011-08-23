@@ -21,3 +21,14 @@ describe Grid, ->
   it 'fails loudly if you give it invalid arguments', ->
     # TODO: figure out analog to Exceptions
 
+  it 'avoids "collisions" on insert', ->
+    @grid = new Grid # TODO: fix wtf was wrong with beforeEach
+    @ball = new Ball
+    @ball2 = new Ball
+
+    @grid.insert @ball, 0
+    expect(@grid.contents(0, 0)).toEqual(@ball)
+
+    @grid.insert @ball2, 0
+    expect(@grid.contents(0, 1)).toEqual(@ball)
+
