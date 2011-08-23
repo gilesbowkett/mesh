@@ -19,6 +19,5 @@ describe Grid, ->
     expect(@grid.contents(0, 0)).toEqual(@ball)
 
   it 'fails loudly if you give it invalid arguments', ->
-    # this is built into the Ruby implementation but in TODO: status for now
     # TODO: figure out analog to Exceptions
 
