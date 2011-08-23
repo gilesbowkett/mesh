@@ -10,11 +10,17 @@ exports.Grid = class Grid
     @rows = []
     @rows[index] = blank_row for index in [0..6]
 
+  column: (index) ->
+    column = []
+    for row in @rows
+      column.push(row[index])
+    column
+
   insert: (ball, column) ->
-    for row in @rows # as in Ruby version, 0th row is top row
-      unless row[column]
-        row[column] = ball
-        break
+    inserted = false
+    for row in @rows
+      break unless row[column]
+    row[column] = ball
 
   contents: (x, y) ->
     @rows[y][x]
