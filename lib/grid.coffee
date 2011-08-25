@@ -24,3 +24,7 @@ exports.Grid = class Grid
   contents: (x, y) ->
     @rows[y][x]
 
+  clear_column: (column_number) ->
+    for row_number in [0..6]
+      @rows[row_number][column_number] = null
+

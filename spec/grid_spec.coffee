@@ -39,3 +39,13 @@ describe Grid, ->
     @grid.insert @ball, 0
     expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
 
+  it 'clears columns', ->
+    @grid = new Grid # TODO: fix wtf was wrong with beforeEach
+    @ball = new Ball
+
+    @grid.insert @ball, 0
+    expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
+
+    @grid.clear_column(0)
+    expect(@grid.column(0)).toEqual([null, null, null, null, null, null, null])
+
