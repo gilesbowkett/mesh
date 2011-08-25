@@ -22,19 +22,20 @@ describe Grid, ->
     # TODO: figure out analog to Exceptions
 
   it 'avoids "collisions" on insert', ->
-    # FIXME: this test passes but is inadequate and needs a more specific description
     @grid = new Grid # TODO: fix wtf was wrong with beforeEach
-    @ball = new Ball
-    @ball2 = new Ball
+    @ball = new Ball 1
+    @ball2 = new Ball 2
 
     @grid.insert @ball, 0
     @grid.insert @ball2, 0
+
     expect(@grid.contents(0, 0)).toEqual(@ball)
     expect(@grid.contents(0, 1)).toEqual(@ball2)
+    expect(@grid.contents(0, 2)).toEqual(null)
 
   it 'accesses by column', ->
     @grid = new Grid # TODO: fix wtf was wrong with beforeEach
     @ball = new Ball
     @grid.insert @ball, 0
-#    expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
+    expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
 

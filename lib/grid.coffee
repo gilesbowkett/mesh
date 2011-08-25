@@ -4,11 +4,11 @@
 
 exports.Grid = class Grid
   constructor: ->
-    # set up 7x7 grid (I'm hoping more idiomatic techniques exist)
-    blank_row = []
-    blank_row.push null for index in [0..6]
     @rows = []
-    @rows[index] = blank_row for index in [0..6]
+    for x in [0..6]
+      @rows[x] = []
+      for y in [0..6]
+        @rows[x][y] = null
 
   column: (index) ->
     column = []
@@ -17,10 +17,9 @@ exports.Grid = class Grid
     column
 
   insert: (ball, column) ->
-    inserted = false
-    for row in @rows
-      break unless row[column]
-    row[column] = ball
+    for row in @rows when row[column] is null
+      row[column] = ball
+      return
 
   contents: (x, y) ->
     @rows[y][x]
