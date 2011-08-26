@@ -35,3 +35,6 @@ exports.Grid = class Grid
       for ball in balls
         @insert(ball, column_number)
 
+  isCleared: ->
+    0 == @rows.flatten().compact().length
+

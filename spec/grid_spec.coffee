@@ -73,3 +73,11 @@ describe Grid, ->
     @grid.gravity()
     expect(@grid.column 0).toEqual([ball_1, ball_4, ball_6, null, null, null, null])
 
+  it 'checks cleared status', ->
+    @grid = new Grid # TODO: fix wtf was wrong with beforeEach
+    @ball = new Ball
+
+    expect(@grid.isCleared()).toBeTruthy()
+    @grid.insert @ball, 0
+    expect(@grid.isCleared()).toBeFalsy()
+
