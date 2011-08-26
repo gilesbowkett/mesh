@@ -73,4 +73,3 @@ describe Grid, ->
     @grid.gravity()
     expect(@grid.column 0).toEqual([ball_1, ball_4, ball_6, null, null, null, null])
 
-

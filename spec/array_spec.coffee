@@ -30,6 +30,9 @@ describe Array, ->
     expect([null, 1].compact()).toEqual([1])
     expect([null, 1, null].compact()).toEqual([1])
 
+  it "emulates Ruby's Array#flatten", ->
+    expect([[1,2], [3, 4]].flatten()).toEqual([1, 2, 3, 4])
+
   it 'collapses arrays', ->
     expect([null, 1, 2, 3, 4, 5, 6].collapse()).toEqual([1, 2, 3, 4, 5, 6, null])
     expect([null, 1, null, null, 4, null, 6].collapse()).toEqual([1, 4, 6, null, null, null, null])

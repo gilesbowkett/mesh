@@ -24,6 +24,11 @@ Array::subsequence = (ball) ->
 Array::compact = ->
   item for item in this when item
 
+# like in Ruby
+Array::flatten = ->
+  # straight nabbed from http://bit.ly/oVOjXP
+  [].concat.apply([], this)
+
 # after we remove exploded balls, collapse the array, eliminating nulls where the
 # exploded balls used to be (this was called drop in the earlier Ruby version)
 Array::collapse = ->
