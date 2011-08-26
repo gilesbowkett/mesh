@@ -19,4 +19,3 @@ describe Ball, ->
     ball.advance_state()
     expect(ball.value).toEqual(jasmine.any(Number))
 
-
