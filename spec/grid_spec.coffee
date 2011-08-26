@@ -2,7 +2,6 @@ Grid = (require '/Users/giles/dev/mesh/lib/grid').Grid
 Ball = (require '/Users/giles/dev/mesh/lib/ball').Ball
 
 describe Grid, ->
-
   beforeEach ->
     @grid = new Grid
     @ball = new Ball
