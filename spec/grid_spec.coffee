@@ -15,55 +15,50 @@ describe Grid, ->
       for index in blank_row
         expect(blank_row[index]).toEqual(null)
 
-  it 'inserts a ball into the grid', ->
-    @grid.insert @ball, 0
-    expect(@grid.contents(0, 0)).toEqual(@ball)
+  describe 'simple inserts', ->
+    beforeEach ->
+      @grid.insert @ball, 0
 
-  it 'fails loudly if you give it invalid arguments', ->
-    # TODO: figure out analog to Exceptions
+    it 'inserts a ball into the grid', ->
+      expect(@grid.contents(0, 0)).toEqual(@ball)
 
-  it 'avoids "collisions" on insert', ->
-    @ball = new Ball 1
-    @ball2 = new Ball 2
+    it 'avoids "collisions" on insert', ->
+      @ball2 = new Ball 2
+      @grid.insert @ball2, 0
 
-    @grid.insert @ball, 0
-    @grid.insert @ball2, 0
+      expect(@grid.contents(0, 0)).toEqual(@ball)
+      expect(@grid.contents(0, 1)).toEqual(@ball2)
+      expect(@grid.contents(0, 2)).toEqual(null)
 
-    expect(@grid.contents(0, 0)).toEqual(@ball)
-    expect(@grid.contents(0, 1)).toEqual(@ball2)
-    expect(@grid.contents(0, 2)).toEqual(null)
+    it 'accesses by column', ->
+      expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
 
-  it 'accesses by column', ->
-    @grid.insert @ball, 0
-    expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
+    it 'clears columns', ->
+      expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
+      @grid.clear_column(0)
+      expect(@grid.column(0)).toEqual([null, null, null, null, null, null, null])
 
-  it 'clears columns', ->
-    @grid.insert @ball, 0
-    expect(@grid.column(0)).toEqual([@ball, null, null, null, null, null, null])
+    it 'checks cleared status', ->
+      expect(@grid.isCleared()).toBeFalsy()
+      @grid.rows[0][0] = null
+      expect(@grid.isCleared()).toBeTruthy()
 
-    @grid.clear_column(0)
-    expect(@grid.column(0)).toEqual([null, null, null, null, null, null, null])
+  describe 'simulating gravity', ->
+    beforeEach ->
+      for digit in [0..6]
+        @grid.insert eval("ball_#{digit} = new Ball(#{digit})"), 0
 
-  it 'simulates gravity (by dropping a column through a null)', ->
-    for digit in [0..6]
-      @grid.insert eval("ball_#{digit} = new Ball(#{digit})"), 0
-    @grid.rows[0][0] = null
-    expect(@grid.column 0).toEqual([null, ball_1, ball_2, ball_3, ball_4, ball_5, ball_6])
+    it 'simulates gravity (by dropping a column through a null)', ->
+      @grid.rows[0][0] = null
+      expect(@grid.column 0).toEqual([null, ball_1, ball_2, ball_3, ball_4, ball_5, ball_6])
 
-    @grid.gravity()
-    expect(@grid.column 0).toEqual([ball_1, ball_2, ball_3, ball_4, ball_5, ball_6, null])
+      @grid.gravity()
+      expect(@grid.column 0).toEqual([ball_1, ball_2, ball_3, ball_4, ball_5, ball_6, null])
 
-  it 'simulates gravity (by dropping balls thru multiple nulls)', ->
-    for digit in [0..6]
-      @grid.insert eval("ball_#{digit} = new Ball(#{digit})"), 0
-    @grid.rows[0][0] = @grid.rows[2][0] = @grid.rows[3][0] = @grid.rows[5][0] = null
-    expect(@grid.column 0).toEqual([null, ball_1, null, null, ball_4, null, ball_6])
+    it 'simulates gravity (by dropping balls thru multiple nulls)', ->
+      @grid.rows[0][0] = @grid.rows[2][0] = @grid.rows[3][0] = @grid.rows[5][0] = null
+      expect(@grid.column 0).toEqual([null, ball_1, null, null, ball_4, null, ball_6])
 
-    @grid.gravity()
-    expect(@grid.column 0).toEqual([ball_1, ball_4, ball_6, null, null, null, null])
-
-  it 'checks cleared status', ->
-    expect(@grid.isCleared()).toBeTruthy()
-    @grid.insert @ball, 0
-    expect(@grid.isCleared()).toBeFalsy()
+      @grid.gravity()
+      expect(@grid.column 0).toEqual([ball_1, ball_4, ball_6, null, null, null, null])
 
