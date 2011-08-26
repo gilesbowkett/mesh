@@ -49,3 +49,15 @@ describe Grid, ->
     @grid.clear_column(0)
     expect(@grid.column(0)).toEqual([null, null, null, null, null, null, null])
 
+  it 'simulates gravity (by dropping a column through a null)', ->
+    @grid = new Grid # TODO: fix wtf was wrong with beforeEach
+    @ball = new Ball
+
+    for digit in [0..6]
+      @grid.insert eval("ball_#{digit} = new Ball(#{digit})"), 0
+    @grid.rows[0][0] = null
+    expect(@grid.column 0).toEqual([null, ball_1, ball_2, ball_3, ball_4, ball_5, ball_6])
+
+    @grid.gravity()
+    expect(@grid.column 0).toEqual([ball_1, ball_2, ball_3, ball_4, ball_5, ball_6, null])
+

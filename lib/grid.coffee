@@ -28,3 +28,10 @@ exports.Grid = class Grid
     for row_number in [0..6]
       @rows[row_number][column_number] = null
 
+  gravity: ->
+    for column_number in [0..6]
+      balls = @column(column_number).collapse()
+      @clear_column(column_number)
+      for ball in balls
+        @insert(ball, column_number)
+
