@@ -11,10 +11,10 @@ describe Ball, ->
     # use graphics for that stuff anyway.)
 
     ball = new Ball
-    expect(ball.value).toEqual(':??')
+    expect(ball.value).toEqual('??')
 
     ball.advance_state()
-    expect(ball.value).toEqual(':?')
+    expect(ball.value).toEqual('?')
 
     ball.advance_state()
     expect(ball.value).toEqual(jasmine.any(Number))
