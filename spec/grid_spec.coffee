@@ -60,3 +60,23 @@ describe Grid, ->
       @grid.gravity()
       expect(@grid.column 0).toEqual([ball_1, ball_4, ball_6, null, null, null, null])
 
+  describe 'exploding', ->
+    it 'initializes with zero balls tagged to explode', ->
+      # @tagged_to_explode == []
+      process.stdout.write 'p'
+    it 'tags balls to explode', ->
+      # Grid#check_explosion
+      process.stdout.write 'p'
+    it 'calculates explosions vertically', ->
+      # Grid#explode_vertical
+      process.stdout.write 'p'
+    it 'calculates explosions horizontally', ->
+      # Grid#explode_horizontal
+      process.stdout.write 'p'
+    it 'sets exploded balls null', ->
+      # Grid#kaboom()
+      process.stdout.write 'p'
+    it 'applies explosion side effects', ->
+      # Grid#blowback
+      process.stdout.write 'p'
+
