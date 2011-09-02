@@ -63,7 +63,7 @@ describe Grid, ->
   describe 'exploding', ->
     it 'initializes with zero balls tagged to explode', ->
       # @tagged_to_explode == []
-      process.stdout.write 'p'
+      expect(@grid.tagged_to_explode).toEqual([])
     it 'tags balls to explode', ->
       # Grid#check_explosion
       process.stdout.write 'p'

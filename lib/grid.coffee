@@ -4,6 +4,7 @@
 
 exports.Grid = class Grid
   constructor: ->
+    @tagged_to_explode = []
     @rows = []
     for x in [0..6]
       @rows[x] = []
