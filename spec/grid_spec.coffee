@@ -62,21 +62,20 @@ describe Grid, ->
 
   describe 'exploding', ->
     it 'initializes with zero balls tagged to explode', ->
-      # @tagged_to_explode == []
       expect(@grid.tagged_to_explode).toEqual([])
     it 'tags balls to explode', ->
       # Grid#check_explosion
       process.stdout.write 'p'
-    it 'calculates explosions vertically', ->
+    it 'calculates explosions vertically', -> # this probably becomes nested description
       # Grid#explode_vertical
       process.stdout.write 'p'
-    it 'calculates explosions horizontally', ->
+    it 'calculates explosions horizontally', -> # this probably becomes nested description
       # Grid#explode_horizontal
       process.stdout.write 'p'
     it 'sets exploded balls null', ->
       # Grid#kaboom()
       process.stdout.write 'p'
-    it 'applies explosion side effects', ->
+    it 'distributes explosion side effects', ->
       # Grid#blowback
       process.stdout.write 'p'
 
