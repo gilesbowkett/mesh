@@ -3,20 +3,21 @@
 # differently. gems and plugins must collaborate cleanly with all sorts of unknown code. a game
 # declares its own world and rules it completely. I enjoy monkey-patching even within gems and
 # plugins, but guilt tinges that enjoyment, while caution restrains it. here, in a game, I feel
-# free to monkey-patch all I want.
+# free to monkey-patch all I want. although I admit that this argument is horseshit if you're using
+# plugins etc in your game
 
 # do we have a sequence matching the rules of the game?
 Array::sequence = (ball) ->
   ball.value == (@subsequence ball.value).length
 
 # do we have a subset in the total set which qualifies as explodable?
-Array::subsequence = (ball) ->
+Array::subsequence = (number) ->
   @biggest_subsequence = []
   for first in [0..6]    # compare every ball...
     for last in [0..6]   # ...to every other ball
       current_subsequence = this[first..last]
       unless null in current_subsequence or 0 == current_subsequence.length
-        if ball in current_subsequence and @biggest_subsequence.length < current_subsequence.length
+        if number in current_subsequence and @biggest_subsequence.length < current_subsequence.length
           @biggest_subsequence = this[first..last]
   @biggest_subsequence
 
