@@ -2,6 +2,8 @@
 # which is obviously a code smell. @grid represents a set of rows, so this time around it's
 # called @rows.
 
+Ball = (require '/Users/giles/dev/mesh/lib/ball').Ball
+
 exports.Grid = class Grid
   constructor: ->
     @tagged_to_explode = []
@@ -38,4 +40,8 @@ exports.Grid = class Grid
 
   isCleared: ->
     0 == @rows.flatten().compact().length
+
+  checkExplosion: (ball, array, row, column) ->
+    if (ball instanceof Ball) && (array.sequence(ball))
+      @tagged_to_explode.push([row, column])
 

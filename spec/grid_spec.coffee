@@ -63,9 +63,17 @@ describe Grid, ->
   describe 'exploding', ->
     it 'initializes with zero balls tagged to explode', ->
       expect(@grid.tagged_to_explode).toEqual([])
+
     it 'tags balls to explode', ->
-      # Grid#check_explosion
-      process.stdout.write 'p'
+      fake_array = {}
+      fake_array.sequence = (ball) => return true
+      @grid.checkExplosion(@ball, fake_array, 0, 0)
+
+      expect(@grid.tagged_to_explode).toEqual([[0, 0]])
+      # ugh, is this really how I built this? that shit is awful. the ball should be tagged
+      # to explode and simply know its own coordinates. this echoes the Ruby code precisely,
+      # but it's pretty fucking clear that the Ruby code was fucked.
+
     it 'calculates explosions vertically', -> # this probably becomes nested description
       # Grid#explode_vertical
       process.stdout.write 'p'

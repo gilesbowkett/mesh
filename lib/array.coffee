@@ -6,6 +6,9 @@
 # free to monkey-patch all I want. although I admit that this argument is horseshit if you're using
 # plugins etc in your game
 
+# actually this might be total horseshit. chances are pretty good these should be array subclasses
+# named Row and Column -- or possibly even Backbone Collections
+
 # do we have a sequence matching the rules of the game?
 Array::sequence = (ball) ->
   ball.value == (@subsequence ball.value).length
